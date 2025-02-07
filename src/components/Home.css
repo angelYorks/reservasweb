@@ -1,0 +1,36 @@
+/* Sección Home */
+
+.home-section {
+    position: relative;
+    width: 100%;  /* Antes 100vw */
+    height: 100vh;
+    background: url("../img/FOTOS/fondo.jpg") no-repeat center center;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: left;
+    color: white;
+    padding: 0;
+    box-sizing: border-box; /* Asegurar que el ancho es correcto */
+}
+  
+  /* Capa difuminada */
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(5px);
+  }
+  
+  /* Contenido */
+  .home-content {
+    position: relative;
+    z-index: 1;
+    max-width: 800px;
+    padding: 40px;
+  }
+

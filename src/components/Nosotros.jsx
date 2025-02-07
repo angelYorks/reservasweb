@@ -1,11 +1,20 @@
-import React from "react";
+import React from 'react';
+import './Secciones.css';
+import "./Nosotros.css";
 
 const Nosotros = () => {
     return (
-        <div className="home">
-            <h1>Bienvenidos a la página</h1>         
+      <section id="nosotros" className="section nosotros-section">
+        <h2>Nosotros</h2>
+        <div className="divider">
+          <div className="line"></div>
+          <div className="diamond"></div>
+          <div className="line"></div>
         </div>
-    )
-} 
-
-export default Nosotros;
+        <p>Somos un restaurante comprometido con ofrecer la mejor experiencia gastronómica.</p>
+      </section>
+    );
+  };
+  
+  export default Nosotros;
+  

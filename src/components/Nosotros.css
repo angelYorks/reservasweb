@@ -1,0 +1,49 @@
+/* Sección Nosotros */
+.nosotros-section {
+    position: relative;
+    width: 100vw;
+    min-height: 100vh;
+    background: url("../img/FOTOS/nosotros.jpg") no-repeat center center/cover;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #0C4CA3;
+    padding: 50px 20px;
+  }
+  
+  /* Título */
+  .nosotros-section h2 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+  }
+  
+  /* Línea divisora con rombo */
+  .divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+  .line {
+    width: 100px;
+    height: 2px;
+    background-color: #0C4CA3;
+  }
+  
+  .diamond {
+    width: 12px;
+    height: 12px;
+    background-color:#0C4CA3;
+    transform: rotate(45deg);
+    margin: 0 10px;
+  }
+  
+  /* Texto */
+  .nosotros-section p {
+    font-size: 1.2rem;
+    max-width: 600px;
+  }
+  
