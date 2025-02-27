@@ -53,60 +53,77 @@ const Reservas = () => {
     }
   };
 
-  const manejarConfirmar = () => {
+  const manejarConfirmar = async () => {
     if (!nombres || !apellidos || !email || !telefono) {
       alert("Por favor, completa todos los campos de contacto.");
       return;
     }
-
+  
     const reserva = {
-      cantidadPersonas,
-      fecha,
-      hora,
-      zona,
-      sexo,
-      fechaNacimiento,
-      accesibilidad,
-      tipoCliente,
-      documento,
-      alergia,
-      requerimiento,
-      necesidad,
-      nombres,
-      apellidos,
-      email,
-      telefono
+      cantidad_personas: cantidadPersonas, // snake_case
+      fecha: fecha,
+      hora: hora,
+      zona: zona,
+      sexo: sexo,
+      fecha_nacimiento: fechaNacimiento, // snake_case
+      accesibilidad: accesibilidad,
+      tipo_cliente: tipoCliente, // snake_case
+      documento: documento,
+      alergia: alergia,
+      requerimiento: requerimiento,
+      necesidad: necesidad,
+      cliente_nombre: `${nombres} ${apellidos}`, // Nuevo campo combinado
+      cliente_telefono: telefono, // Nuevo nombre
+      cliente_email: email // Nuevo nombre
     };
-
-    localStorage.setItem("reserva", JSON.stringify(reserva));
-
-    alert("¡Reserva realizada correctamente!");
-
-    setCantidadPersonas(1);
-    setFecha('');
-    setHora('');
-    setZona('');
-    setAccesibilidad('');
-    setTipoCliente('');
-    setDocumento('');
-    setSexo('');
-    setFechaNacimiento('');
-    setRequerimiento('');
-    setNecesidad('');
-    setAlergia('');
-    setNombres('');
-    setApellidos('');
-    setEmail('');
-    setTelefono('');
-
-    setPanelActual(1);
+  
+    try {
+      const response = await fetch(`http://127.0.0.1:8000/api/reservas`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(reserva),
+      });
+  
+      if (!response.ok) {
+        throw new Error("Error al realizar la reserva");
+      }
+  
+      const data = await response.json();
+      alert("¡Reserva realizada correctamente!");
+  
+      // Reiniciar estados después de confirmar
+      setCantidadPersonas(1);
+      setFecha('');
+      setHora('');
+      setZona('');
+      setAccesibilidad('');
+      setTipoCliente('');
+      setDocumento('');
+      setSexo('');
+      setFechaNacimiento('');
+      setRequerimiento('');
+      setNecesidad('');
+      setAlergia('');
+      setNombres('');
+      setApellidos('');
+      setEmail('');
+      setTelefono('');
+  
+      setPanelActual(1);
+    } catch (error) {
+      console.error("Error al enviar la reserva:", error);
+      alert("Hubo un error al procesar la reserva. Inténtalo nuevamente.");
+    }
   };
 
 
   const horasDisponibles = [];
   for (let h = 12; h <= 23; h++) {
     for (let m = 0; m < 60; m += 15) {
-      const horaFormateada = `${h % 12 === 0 ? 12 : h % 12}:${m === 0 ? "00" : m} ${h < 12 ? "AM" : "PM"}`;
+      const horaFormateada = `${h % 12 === 0 ? 12 : h % 12}:${m === 0 ? "00" : m} ${h >= 12 ? "PM" : "AM"}`;
+
       horasDisponibles.push(horaFormateada);
     }
   }
