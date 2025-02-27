@@ -4,7 +4,7 @@ import './LoginModal.css';
 const LoginModal = ({ isOpen, onClose }) => {
   const [isRegister, setIsRegister] = useState(false);
 
-  // Deshabilitar el scroll cuando el modal está abierto
+  
   useEffect(() => {
     if (isOpen) {
       document.body.classList.add("modal-open");

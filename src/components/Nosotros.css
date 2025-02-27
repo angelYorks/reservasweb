@@ -1,7 +1,7 @@
 /* Sección Nosotros */
 .nosotros-section {
     position: relative;
-    width: 100vw;
+    width: 100%;
     min-height: 100vh;
     background: url("../img/FOTOS/nosotros.jpg") no-repeat center center/cover;
     display: flex;
