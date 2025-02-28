@@ -3,6 +3,8 @@ import './Reserva.css';
 
 const Reservas = () => {
   const [panelActual, setPanelActual] = useState(1);
+
+  // Estado de los diferentes campos
   const [fecha, setFecha] = useState('');
   const [hora, setHora] = useState('');
   const [zona, setZona] = useState('');
@@ -19,6 +21,43 @@ const Reservas = () => {
   const [apellidos, setApellidos] = useState('');
   const [email, setEmail] = useState('');
   const [telefono, setTelefono] = useState('');
+
+  // Función para obtener la fecha mínima permitida (hoy)
+  const obtenerFechaMinima = () => {
+    const hoy = new Date();
+    return hoy.toISOString().split('T')[0]; // Formato YYYY-MM-DD
+  };
+
+  // Función para obtener las horas disponibles según la fecha
+  const obtenerHorasDisponibles = () => {
+    const ahora = new Date();
+    const horaActual = ahora.getHours();
+    const minutosActuales = ahora.getMinutes();
+
+    // Verificamos si la fecha elegida es HOY
+    const esHoy = fecha === obtenerFechaMinima();
+    const horas = [];
+
+    // Construimos las horas de 12:00 PM a 11:45 PM
+    for (let h = 12; h <= 23; h++) {
+      for (let m = 0; m < 60; m += 15) {
+        const horaFormateada = `${h % 12 === 0 ? 12 : h % 12}:${m === 0 ? "00" : m} ${h >= 12 ? "PM" : "AM"}`;
+
+        // Si es hoy, solo agregamos horas que sean mayores a la hora y minutos actuales
+        if (
+          !esHoy ||
+          h > horaActual ||
+          (h === horaActual && m > minutosActuales)
+        ) {
+          horas.push(horaFormateada);
+        }
+      }
+    }
+    return horas;
+  };
+
+  // Para calcular el progreso en la barra
+  const progreso = (panelActual - 1) * (100 / 5);
 
   const manejarSiguiente = () => {
     if (panelActual === 1 && cantidadPersonas === 0) {
@@ -37,7 +76,10 @@ const Reservas = () => {
       alert("Por favor, selecciona una zona favorita.");
       return;
     }
-    if (panelActual === 5 && (!sexo || !fechaNacimiento || !accesibilidad || !tipoCliente || !documento)) {
+    if (
+      panelActual === 5 &&
+      (!sexo || !fechaNacimiento || !accesibilidad || !tipoCliente || !documento)
+    ) {
       alert("Por favor, completa todos los campos obligatorios.");
       return;
     }
@@ -54,27 +96,28 @@ const Reservas = () => {
   };
 
   const manejarConfirmar = async () => {
+    // Validación de campos de contacto en el último panel
     if (!nombres || !apellidos || !email || !telefono) {
       alert("Por favor, completa todos los campos de contacto.");
       return;
     }
   
     const reserva = {
-      cantidad_personas: cantidadPersonas, // snake_case
-      fecha: fecha,
-      hora: hora,
-      zona: zona,
-      sexo: sexo,
-      fecha_nacimiento: fechaNacimiento, // snake_case
-      accesibilidad: accesibilidad,
-      tipo_cliente: tipoCliente, // snake_case
-      documento: documento,
-      alergia: alergia,
-      requerimiento: requerimiento,
-      necesidad: necesidad,
-      cliente_nombre: `${nombres} ${apellidos}`, // Nuevo campo combinado
-      cliente_telefono: telefono, // Nuevo nombre
-      cliente_email: email // Nuevo nombre
+      cantidad_personas: cantidadPersonas,
+      fecha,
+      hora,
+      zona,
+      sexo,
+      fecha_nacimiento: fechaNacimiento,
+      accesibilidad,
+      tipo_cliente: tipoCliente,
+      documento,
+      alergia,
+      requerimiento,
+      necesidad,
+      cliente_nombre: `${nombres} ${apellidos}`, 
+      cliente_telefono: telefono,
+      cliente_email: email
     };
   
     try {
@@ -90,7 +133,7 @@ const Reservas = () => {
         throw new Error("Error al realizar la reserva");
       }
   
-      const data = await response.json();
+      await response.json();
       alert("¡Reserva realizada correctamente!");
   
       // Reiniciar estados después de confirmar
@@ -118,25 +161,10 @@ const Reservas = () => {
     }
   };
 
-
-  const horasDisponibles = [];
-  for (let h = 12; h <= 23; h++) {
-    for (let m = 0; m < 60; m += 15) {
-      const horaFormateada = `${h % 12 === 0 ? 12 : h % 12}:${m === 0 ? "00" : m} ${h >= 12 ? "PM" : "AM"}`;
-
-      horasDisponibles.push(horaFormateada);
-    }
-  }
-
-  const manejarSeleccionarHora = (horaSeleccionada) => {
-    setHora(horaSeleccionada);
-  };
-
-  const progreso = (panelActual - 1) * (100 / 5);
-
   return (
     <section id="reservas" className="section">
       <br />
+      {/* Barra de Progreso */}
       <div className="progreso">
         <p>{panelActual} / 6</p>
         <div className="progreso-bar-container">
@@ -147,7 +175,7 @@ const Reservas = () => {
         </div>
       </div>
 
-      {/* Panel 1 */}
+      {/* Panel 1 - Cantidad de personas */}
       {panelActual === 1 && (
         <div className="panel">
           <p>Selecciona la cantidad de personas:</p>
@@ -166,13 +194,14 @@ const Reservas = () => {
         </div>
       )}
 
-      {/* Panel 2 */}
+      {/* Panel 2 - Selección de fecha */}
       {panelActual === 2 && (
         <div className="panel">
           <p>Selecciona la fecha para tu reserva:</p>
           <input
             type="date"
             value={fecha}
+            min={obtenerFechaMinima()} /* Restringe a fechas desde hoy */
             onChange={(e) => setFecha(e.target.value)}
             className="fecha-input"
           />
@@ -182,16 +211,16 @@ const Reservas = () => {
         </div>
       )}
 
-      {/* Panel 3 */}
+      {/* Panel 3 - Selección de hora */}
       {panelActual === 3 && (
         <div className="panel">
           <p>Elige la hora de tu reserva:</p>
           <div className="hora-buttons-container">
-            {horasDisponibles.map((horaOption, index) => (
+            {obtenerHorasDisponibles().map((horaOption, index) => (
               <button
                 key={index}
                 className={`hora-button ${horaOption === hora ? 'seleccionado' : ''}`}
-                onClick={() => manejarSeleccionarHora(horaOption)}
+                onClick={() => setHora(horaOption)}
               >
                 {horaOption}
               </button>
@@ -203,7 +232,7 @@ const Reservas = () => {
         </div>
       )}
 
-      {/* Panel 4 */}
+      {/* Panel 4 - Zona favorita */}
       {panelActual === 4 && (
         <div className="panel">
           <p>Selecciona tu zona favorita:</p>
@@ -227,7 +256,7 @@ const Reservas = () => {
         </div>
       )}
 
-      {/* Panel 5 */}
+      {/* Panel 5 - Personalización */}
       {panelActual === 5 && (
         <div className="panel">
           <p>Ayúdanos a personalizar tu experiencia</p>
@@ -274,7 +303,6 @@ const Reservas = () => {
                 onChange={(e) => setDocumento(e.target.value)}
               />
             </div>
-
             <div>
               <label>¿Tienes algún requerimiento especial?</label>
               <input
@@ -305,7 +333,7 @@ const Reservas = () => {
         </div>
       )}
 
-      {/* Panel 6 */}
+      {/* Panel 6 - Confirmación */}
       {panelActual === 6 && (
         <div className="panel">
           <h3>Ya casi terminamos</h3>
@@ -313,17 +341,36 @@ const Reservas = () => {
             <div className="col-sm-7">
               <p>Reservar para:</p>
               <label>Nombres</label>
-              <input type="text" value={nombres} onChange={(e) => setNombres(e.target.value)} />
+              <input
+                type="text"
+                value={nombres}
+                onChange={(e) => setNombres(e.target.value)}
+              />
               <label>Apellidos</label>
-              <input type="text" value={apellidos} onChange={(e) => setApellidos(e.target.value)} />
+              <input
+                type="text"
+                value={apellidos}
+                onChange={(e) => setApellidos(e.target.value)}
+              />
               <label>Email</label>
-              <input type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+              />
               <label>Teléfono</label>
-              <input type="text" value={telefono} onChange={(e) => setTelefono(e.target.value)} />
+              <input
+                type="text"
+                value={telefono}
+                onChange={(e) => setTelefono(e.target.value)}
+              />
             </div>
-
             <div className="col-sm-5">
-              <p><strong>Don Bosco</strong><br />Av. Primavera 557<br />(01) 2425957</p>
+              <p>
+                <strong>Don Bosco</strong><br />
+                Av. Primavera 557<br />
+                (01) 2425957
+              </p>
               <p><strong>Cantidad de personas:</strong> {cantidadPersonas}</p>
               <p><strong>Fecha:</strong> {fecha}</p>
               <p><strong>Hora:</strong> {hora}</p>

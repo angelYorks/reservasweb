@@ -1,160 +1,205 @@
-/* Fondo de pantalla para todo el sitio */
+/* Fondo de pantalla con color azul sólido */
 body {
+  background-color: #E3F2FD; /* Azul principal */
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
 
-    background-image: url('../img/comida.webp'); /* Reemplaza con la ruta de tu imagen */
-    background-size: cover;
-    background-position: center;
-    background-attachment: fixed;
-    height: 100vh;
-  }
-  
-  .panel {
-    background: rgba(0, 0, 0, 0.6); /* Fondo oscuro semitransparente */
-    padding: 20px;
-    border-radius: 10px;
-    margin-bottom: 20px;
-  }
-  
-  /* Estilo para el campo de fecha */
-  .fecha-input {
-    font-size: 24px; /* Grande como un calendario */
-    padding: 10px;
-    margin: 20px 0;
-    width: 80%;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-  }
-  
-  /* Estilo para el select de hora */
-  .hora-select {
-    font-size: 20px;
-    padding: 10px;
-    width: 80%;
-    border-radius: 8px;
-    border: 1px solid #ccc;
-    margin: 20px 0;
-  }
-  
-  /* Botones */
-  .boton-siguiente, .boton-anterior {
-    font-size: 18px;
-    padding: 10px 20px;
-    margin: 10px;
-    background-color: #f64829;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  .boton-siguiente:hover, .boton-anterior:hover {
-    background-color: #832818;
-  }
-  
+/*  Panel de contenido */
+.panel {
+  background: rgba(255, 255, 255, 0.95); /* Fondo blanco con más opacidad */
+  color: #333; /* Color oscuro para el texto */
+  padding: 20px;
+  border-radius: 10px;
+  margin: 20px auto;
+  width: 90%;
+  max-width: 600px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
 
-  
-  .hora-buttons-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-  }
-  
-  .hora-button {
-    background-color: #28a745;
-    color: white;
-    font-size: 16px;
-    padding: 10px 20px;
-    border-radius: 5px;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s;
-    width: 120px; /* Tamaño fijo para cada botón */
-  }
-  
-  .hora-button:hover {
-    background-color: #25436e;
-  }
-  
-  .hora-button.seleccionado {
-    background-color: #1c0a07; /* Color diferente para el botón seleccionado */
-  }
-  
-  .hora-button:focus {
-    outline: none; /* Eliminar el borde de foco */
-  }
 
-  .progreso {
-    text-align: center;
-    font-size: 1.2em; /* Ajusté el tamaño del texto para hacerlo más pequeño */
-    font-weight: bold;
-   
-    background: linear-gradient(135deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3));
- 
-    color: white;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-    width: 60%; /* Agregué un ancho más pequeño para la barra de progreso */
-    margin: 0 auto; 
-  }
-  
-  
-  .progreso p {
-    margin: 0;
-    font-size: 1.4em;
-  }
-  
-  .progreso-bar-container {
-    width: 100%;
-    height: 10px;
-    background-color: #ddd;
-    border-radius: 5px;
-    margin-top: 10px;
-  }
-  
-  .progreso-bar {
-    height: 100%;
-    width: 0%;
-    background-color: #4caf50;
-    border-radius: 5px;
-    transition: width 0.3s ease;
-  }
-  
-  .progreso-bar-final {
-    background-color: #ff9800;
-  }
-  
-  .zona-buttons-container, .hora-buttons-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    justify-content: center;
-  }
-  
-  .zona-button, .hora-button {
-    padding: 10px 20px;
-    font-size: 1em;
-    cursor: pointer;
-    border: 1px solid #ccc;
-    background-color: #6ebccf;
-    border-radius: 5px;
-  }
-  
-  .zona-button.seleccionado{
-    background-color: #1c0a07;
-    color: white;
-  }
-  
+/* ✅ Estilos mejorados para el input de fecha */
+.fecha-input {
+  font-size: 18px;
+  padding: 12px;
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid #007bff;
+  outline: none;
+  transition: 0.3s;
+}
 
-/* Estilos generales del formulario */
+.fecha-input:focus {
+  border-color: #0056b3;
+  box-shadow: 0 0 5px rgba(0, 86, 179, 0.5);
+}
+
+/* ✅ Estilos mejorados para el select de hora */
+.hora-select {
+  font-size: 18px;
+  padding: 12px;
+  width: 100%;
+  border-radius: 8px;
+  border: 1px solid #007bff;
+  outline: none;
+  transition: 0.3s;
+}
+
+/* ✅ Botones */
+.boton-siguiente,
+.boton-anterior {
+  font-size: 18px;
+  padding: 12px 24px;
+  margin: 10px;
+  background-color: #0056b3; /* Azul más oscuro */
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.boton-siguiente:hover,
+.boton-anterior:hover {
+  background-color: #003a80;
+}
+
+/* ✅ Contenedor de botones de hora */
+.hora-buttons-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+/* ✅ Botones de selección de hora */
+.hora-button {
+  background-color: #007bff;
+  color: white;
+  font-size: 16px;
+  padding: 10px 20px;
+  border-radius: 50px;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+  width: 120px;
+  text-align: center;
+}
+
+.hora-button:hover {
+  background-color: #0056b3;
+}
+
+.hora-button.seleccionado {
+  background-color: #f1c40f; /* Amarillo para el seleccionado */
+  color: black;
+}
+
+/* ✅ Contador de páginas (paginador) */
+.paginador {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+/* ✅ Estilo de los números en el paginador */
+.paginador span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  font-size: 18px;
+  font-weight: bold;
+  color: white;
+  background-color: #0056b3;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.paginador span:hover {
+  background-color: #003a80;
+}
+
+.paginador .activo {
+  background-color: #f1c40f;
+  color: black;
+}
+
+/* ✅ Barra de progreso */
+.progreso {
+  text-align: center;
+  font-size: 1.2em;
+  font-weight: bold;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.3));
+  color: white;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  width: 60%;
+  margin: 20px auto;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.progreso-bar-container {
+  width: 100%;
+  height: 10px;
+  background-color: #ddd;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+.progreso-bar {
+  height: 100%;
+  width: 0%;
+  background-color: #4caf50;
+  border-radius: 5px;
+  transition: width 0.3s ease;
+}
+
+.progreso-bar-final {
+  background-color: #ff9800;
+}
+
+/* ✅ Contenedor de botones de zona */
+.zona-buttons-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+/* ✅ Botones de selección de zona */
+.zona-button {
+  padding: 10px 20px;
+  font-size: 1em;
+  cursor: pointer;
+  border: 1px solid #ccc;
+  background-color: #6ebccf;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+.zona-button.seleccionado {
+  background-color: #f1c40f;
+  color: black;
+}
+
+/* ✅ Estilos generales del formulario */
 .panel form {
   display: flex;
   flex-direction: column;
   gap: 12px;
   margin-top: 20px;
   padding: 15px;
-  background-color: #f8f8f8;
+  background-color: white;
+  color: black;
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  max-width: 400px; /* Limita el ancho */
+  max-width: 400px;
   margin-left: auto;
   margin-right: auto;
 }
@@ -166,18 +211,19 @@ body {
 }
 
 .panel form label {
-  font-size: 0.9rem; /* Tamaño de texto más pequeño */
+  font-size: 0.9rem;
   font-weight: 600;
   color: #333;
 }
+
 .panel form input,
 .panel form select,
 .panel form textarea {
-  padding: 8px;
-  font-size: 0.9rem; /* Tamaño de texto más pequeño */
+  padding: 10px;
+  font-size: 1rem;
   border: 1px solid #ccc;
   border-radius: 8px;
-  transition: all 0.3s ease;
+  transition: 0.3s;
 }
 
 .panel form input:focus,
@@ -187,88 +233,26 @@ body {
   box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
 }
 
-.panel form input[type="date"] {
-  cursor: pointer;
-}
-
-.panel form select {
-  background-color: #fff;
-}
-
 .panel form textarea {
   height: 100px;
   resize: vertical;
   font-family: Arial, sans-serif;
 }
 
+/* ✅ Responsividad */
+@media (max-width: 768px) {
+  .panel {
+    width: 95%;
+  }
 
-.panel .row {
-  margin-top: 20px;
-}
+  .boton-siguiente,
+  .boton-anterior {
+    width: 100%;
+  }
 
-.panel .col-sm-7 input {
-  margin-bottom: 15px;
-}
-
-
-.panel .col-sm-5 {
-  padding-left: 20px;
-}
-
-.panel .col-sm-7 {
-  padding-right: 20px;
-}
-
-.panel .row {
-  display: flex;
-  justify-content: space-between;
-}
-
-.panel .col-sm-7, .panel .col-sm-5 {
-  width: 48%; /* Proporcionamos un 48% de espacio para cada columna */
-}
-
-/* Estilos para los inputs, selects y textarea en el panel 6 */
-.panel .col-sm-7 input,
-.panel .col-sm-7 select,
-.panel .col-sm-7 textarea {
-  padding: 10px;
-  font-size: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  transition: all 0.3s ease;
-  width: 100%; /* Ocupa todo el ancho disponible */
-  box-sizing: border-box; /* Asegura que el padding se incluya en el ancho */
-  margin-bottom: 12px; /* Espacio entre los inputs */
-}
-
-/* Enfoque en inputs, selects y textareas */
-.panel .col-sm-7 input:focus,
-.panel .col-sm-7 select:focus,
-.panel .col-sm-7 textarea:focus {
-  border-color: #007bff;
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-}
-
-/* Estilo para los inputs de fecha */
-.panel .col-sm-7 input[type="date"] {
-  cursor: pointer;
-}
-
-/* Estilo para el textarea */
-.panel .col-sm-7 textarea {
-  resize: vertical;
-  font-family: Arial, sans-serif;
-  min-height: 120px; /* Un poco más de altura */
-}
-
-
-.panel .col-sm-5 p {
-  font-weight: bold;
-  margin-top: 20px;
-}
-
-
-.panel .col-sm-5 button:hover {
-  background-color: #832818;
+  .paginador span {
+    width: 30px;
+    height: 30px;
+    font-size: 16px;
+  }
 }
