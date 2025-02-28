@@ -1,4 +1,5 @@
-const API_URL = "http://127.0.0.1:8000/api";
+const API_URL = import.meta.env.VITE_API_URL;
+
 
 
 // ------- RESERVAS -------
@@ -38,24 +39,76 @@ export async function getProductos() {
   return await response.json();
 }
 
-export async function createProducto(producto) {
+export async function createProducto(formData) {
   const response = await fetch(`${API_URL}/productos`, {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(producto),
+    body: formData
   });
+
+  if (!response.ok) {
+    const errorData = await response.json();
+    console.error("Error del servidor:", errorData);
+
+    // Mostrar el detalle del error
+    if (errorData.detail) {
+      throw new Error(Array.isArray(errorData.detail) ? errorData.detail[0].msg : errorData.detail);
+    } else {
+      throw new Error("Error al crear el producto");
+    }
+  }
+
   return await response.json();
 }
 
-export async function updateProducto(producto) {
-  const response = await fetch(`${API_URL}/productos/${producto.id}`, {
+export async function updateProducto(productoId, productoData, imagen) {
+  const formData = new FormData();
+  formData.append('nombre', productoData.nombre);
+  formData.append('descripcion', productoData.descripcion);
+  formData.append('categoria_id', productoData.categoria_id);
+  if (imagen) {
+    formData.append('imagen', imagen);
+  }
+
+  const response = await fetch(`${API_URL}/productos/${productoId}`, {
     method: "PUT",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(producto),
+    body: formData,
   });
   return await response.json();
 }
 
 export async function deleteProducto(productoId) {
   await fetch(`${API_URL}/productos/${productoId}`, { method: "DELETE" });
+}
+
+// ------- CATEGORÍAS -------
+export async function getCategorias() {
+  const response = await fetch(`${API_URL}/categorias`);
+  return await response.json();
+}
+
+export async function createCategoria(categoria) {
+  const response = await fetch(`${API_URL}/categorias`, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(categoria),
+  });
+  return await response.json();
+}
+
+export async function updateCategoria(categoriaId, categoria) {
+  const response = await fetch(`${API_URL}/categorias/${categoriaId}`, {
+    method: "PUT",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(categoria),
+  });
+  return await response.json();
+}
+
+export async function deleteCategoria(categoriaId) {
+  const response = await fetch(`${API_URL}/categorias/${categoriaId}`, { 
+    method: "DELETE" 
+  });
+  if (!response.ok) {
+    throw new Error("Error al eliminar la categoría");
+  }
 }

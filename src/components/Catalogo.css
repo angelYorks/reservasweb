@@ -12,9 +12,11 @@
 }
 
 .catalogo-section h2 {
-    font-size: 2.5rem;
     color: #003366; /* Color azul como en "Nosotros" */
+    font-size: 3.5rem;
+    font-weight: bold;
     margin-bottom: 10px;
+    text-transform: uppercase;
 }
 
 .catalogo-section .linea-separadora {
@@ -52,3 +54,11 @@
     max-width: 1200px;
     width: 100%;
 }
+
+/* Título */
+.catalogo-section h2 {
+    font-size: 3.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+  }

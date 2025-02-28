@@ -11,14 +11,23 @@
   left: 0;
   z-index: 1000;
   box-sizing: border-box;
+  height: 80px; /* Establece una altura fija para la navbar */
 }
 
 /* Logo */
-.navbar-logo .logo {
-  height: 50px;
+.navbar-logo {
+  display: flex;
+  align-items: center; /* Alinea el logo verticalmente */
+  height: 150px; /* Mantiene la altura del contenedor */
 }
 
+.navbar-logo .logo {
+  max-height: 70px; /* Ajusta la altura máxima del logo sin modificar la navbar */
+  width: auto; /* Mantiene la proporción */
+  object-fit: contain; /* Asegura que la imagen no se deforme */
+}
 
+/* Links de la Navbar */
 .navbar-links {
   list-style: none;
   display: flex;
@@ -28,12 +37,10 @@
   padding: 0;
 }
 
-
 .navbar-links li {
   display: flex;
   align-items: center;
 }
-
 
 .navbar-links a {
   text-decoration: none;
@@ -47,7 +54,7 @@
   color: #f1c40f;
 }
 
-
+/* Botón de la Navbar */
 .navbar-button {
   background-color: #FFFFFF;
   color: black;
@@ -57,17 +64,22 @@
   cursor: pointer;
   border-radius: 5px;
   transition: background 0.3s ease;
-  white-space: nowrap; 
+  white-space: nowrap;
 }
 
 .navbar-button:hover {
   background-color: #b71c1c;
 }
 
-
+/* Responsivo */
 @media (max-width: 768px) {
   .navbar {
     padding: 10px 20px; 
+    height: 70px; /* Ajusta la altura en pantallas más pequeñas */
+  }
+
+  .navbar-logo .logo {
+    max-height: 50px; /* Reduce el tamaño del logo en móviles */
   }
 
   .navbar-links {
