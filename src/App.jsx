@@ -7,6 +7,8 @@ import Galeria from './components/Galeria';
 import Catalogo from './components/Catalogo';
 import Reservas from './components/Reservas';
 import LoginModal from './components/LoginModal';
+import Footer from './components/Footer';
+
 import { BrowserRouter as Router, Route, Routes, useLocation } from 'react-router-dom';
 
 const App = () => {
@@ -39,6 +41,7 @@ const AppWithRouter = ({ showLogin, setShowLogin }) => {
           <Nosotros />
           <Galeria />
           <Catalogo />
+          <Footer />
         </>
       )}
 

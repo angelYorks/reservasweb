@@ -1,0 +1,43 @@
+.catalogo-section {
+    width: 100%;
+    min-height: 100vh;
+    padding: 80px 20px;
+    background-color: #FAF3E0; /* Color de fondo igual a "Nosotros" */
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.catalogo-section h2 {
+    font-size: 2.5rem;
+    color: #003366; /* Color azul como en "Nosotros" */
+    margin-bottom: 10px;
+}
+
+.catalogo-section .linea-separadora {
+    width: 80px;
+    height: 3px;
+    background-color: #003366;
+    margin: 10px auto;
+}
+
+.catalogo-section p {
+    max-width: 800px;
+    font-size: 1.2rem;
+    color: #003366;
+    line-height: 1.6;
+}
+
+.catalogo-fondo {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.3; /* Opacidad para que el texto sea legible */
+    background: url('../img/FOTOS/nosotros.jpg') no-repeat center center/cover;
+    z-index: -1;
+}
