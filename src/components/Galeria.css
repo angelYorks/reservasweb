@@ -11,59 +11,84 @@
 }
 
 .galeria-section h2 {
+    font-size: 3.5rem;
+    font-weight: bold;
     margin-bottom: 10px;
+    text-transform: uppercase;
+    color: white;
 }
 
-.galeria-section p {
-    max-width: 700px;
-    margin-bottom: 15px;
+/* Línea con diamante */
+.divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
 }
 
-.linea-separadora {
+.line {
     width: 80px;
     height: 3px;
     background-color: white;
-    margin: 20px auto;
 }
 
-.galeria-container {
+.diamond {
+    width: 14px;
+    height: 14px;
+    background-color: white;
+    transform: rotate(45deg);
+    margin: 0 10px;
+}
+
+/* Texto */
+.galeria-section p {
+    max-width: 700px;
+    margin-bottom: 15px;
+    color: white;
+}
+
+/* Carrusel */
+.galeria-carrusel {
+    width: 100%;
+    max-width: 600px;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items: center;
-    max-width: 90%;
-    overflow: hidden;
-    gap: 20px;
+    position: relative;
 }
 
-.galeria-img {
-    width: 30%;
+.galeria-img-activa {
+    width: 100%;
+    max-width: 500px;
     height: auto;
     border-radius: 10px;
-    transition: transform 0.3s ease;
+    transition: opacity 0.8s ease-in-out;
 }
 
-.galeria-img:hover {
-    transform: scale(1.05);
+/* Indicadores de puntos */
+.galeria-indicadores {
+    display: flex;
+    justify-content: center;
+    margin-top: 10px;
+}
+
+.indicador {
+    width: 12px;
+    height: 12px;
+    margin: 0 5px;
+    background: white;
+    border-radius: 50%;
+    opacity: 0.5;
+    transition: opacity 0.3s ease;
+}
+
+.indicador.activo {
+    opacity: 1;
+    background: yellow;
 }
 
 @media (max-width: 768px) {
-    .galeria-container {
-        display: flex;
-        flex-wrap: nowrap;
-        overflow-x: auto;
-        scroll-snap-type: x mandatory;
-        scroll-behavior: smooth;
-        white-space: nowrap;
-        -webkit-overflow-scrolling: touch;
-        align-items: center;
-        gap: 15px;
-    }
-
-    .galeria-img {
-        width: 90vw;
-        flex: 0 0 auto;
-        scroll-snap-align: center;
-        touch-action: pan-x;
-        margin: 10px 5px;
+    .galeria-img-activa {
+        max-width: 90%;
     }
 }

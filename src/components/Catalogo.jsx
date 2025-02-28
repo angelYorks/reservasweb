@@ -10,7 +10,7 @@ const Catalogo = () => {
       <h2>Catálogo</h2>
       <div className="linea-separadora"></div>
       <p>Explora nuestro menú con los mejores platillos.</p>
-    </section>
+    </section>  
   );
 };
 
