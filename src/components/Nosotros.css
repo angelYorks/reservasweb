@@ -1,49 +1,53 @@
 /* Sección Nosotros */
 .nosotros-section {
-    position: relative;
-    width: 100%;
-    min-height: 100vh;
-    background: url("../img/FOTOS/nosotros.jpg") no-repeat center center/cover;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: #0C4CA3;
-    padding: 50px 20px;
-  }
-  
-  /* Título */
-  .nosotros-section h2 {
-    font-size: 3rem;
-    margin-bottom: 20px;
-  }
-  
-  /* Línea divisora con rombo */
-  .divider {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-bottom: 20px;
-  }
-  
-  .line {
-    width: 100px;
-    height: 2px;
-    background-color: #0C4CA3;
-  }
-  
-  .diamond {
-    width: 12px;
-    height: 12px;
-    background-color:#0C4CA3;
-    transform: rotate(45deg);
-    margin: 0 10px;
-  }
-  
-  /* Texto */
-  .nosotros-section p {
-    font-size: 1.2rem;
-    max-width: 600px;
-  }
-  
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background: url("../img/FOTOS/33f882bb-8fea-4109-9278-7bb5cc017556.jpg") no-repeat center center/cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: #0C4CA3;
+  padding: 80px 20px;
+  background-size: cover;
+}
+
+/* Ajuste del texto */
+.nosotros-section p {
+  font-size: 1.4rem;
+  max-width: 800px;
+  margin-bottom: 20px; /* Espaciado entre párrafos */
+  font-weight: 500;
+}
+
+/* Título */
+.nosotros-section h2 {
+  font-size: 3.5rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+/* Línea divisora */
+.divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.line {
+  width: 80px;
+  height: 3px;
+  background-color: #0C4CA3;
+}
+
+.diamond {
+  width: 14px;
+  height: 14px;
+  background-color:#0C4CA3;
+  transform: rotate(45deg);
+  margin: 0 10px;
+}

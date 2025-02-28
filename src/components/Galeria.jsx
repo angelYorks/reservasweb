@@ -1,4 +1,4 @@
-import React from 'react';
+import React from 'react'; 
 import './Secciones.css';
 import './Galeria.css';
 
@@ -28,4 +28,3 @@ const Galeria = () => {
   };
 
 export default Galeria;
-  
