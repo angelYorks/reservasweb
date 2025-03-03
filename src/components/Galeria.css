@@ -14,7 +14,7 @@
     font-size: 3.5rem;
     font-weight: bold;
     margin-bottom: 10px;
-    text-transform: uppercase;
+    text-transform: none;
     color: white;
 }
 
@@ -26,19 +26,20 @@
     margin-bottom: 20px;
 }
 
-.line {
+.galeria-line {
     width: 80px;
     height: 3px;
     background-color: white;
 }
 
-.diamond {
+.galeria-diamond {
     width: 14px;
     height: 14px;
     background-color: white;
     transform: rotate(45deg);
     margin: 0 10px;
 }
+
 
 /* Texto */
 .galeria-section p {
