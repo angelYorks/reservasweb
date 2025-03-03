@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import './Secciones.css';
 import './Galeria.css';
 
-import galeria1 from "../img/FOTOS/galeria1.jpg";
-import galeria2 from "../img/FOTOS/galeria2.jpg";
-import galeria3 from "../img/FOTOS/galeria3.jpg";
+import galeria1 from "../img/FOTOS/aaa (1).jpg";
+import galeria2 from "../img/FOTOS/don_bosco-e1669446151934-750x467 (1).jpg";
+import galeria3 from "../img/FOTOS/don-bosco-local (1) (1).jpg";
 
 const imagenes = [galeria1, galeria2, galeria3];
 
@@ -23,10 +23,11 @@ const Galeria = () => {
       <section id="galeria" className="galeria-section">
         <h2>Galería</h2>
         <div className="divider">
-          <div className="line"></div>
-          <div className="diamond"></div>
-          <div className="line"></div>
-        </div>
+  <div className="galeria-line"></div>
+  <div className="galeria-diamond"></div>
+  <div className="galeria-line"></div>
+</div>
+
         <p>
           Nuestro restaurante en Jesús María es un espacio que celebra la tradición y la calidez de la cocina criolla peruana.
           Cada rincón refleja nuestra pasión por el buen comer, acompañado del cariño de siempre. Descubra momentos únicos a través
